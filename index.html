@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="kn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>KSSEDEA ರಾಜ್ಯ ಪದಾಧಿಕಾರಿಗಳ ಬ್ಯಾನರ್ Maker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Noto+Serif+Kannada:wght@400;500;600;700;800&family=Baloo+Tamma+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:#e8edf5;color:#16204a;font-family:"Noto Sans Kannada","Noto Serif Kannada","Nirmala UI","Tunga",sans-serif}
+button,input{font-family:inherit}.toolbar{position:sticky;top:0;z-index:1000;background:#fff;box-shadow:0 3px 16px #0002;padding:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.toolbar button,.toolbar label{border:0;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:700;background:#edf2ff;color:#173d9c;font-size:13px}.toolbar button:disabled{opacity:.45;cursor:not-allowed}.toolbar .green{background:#118448;color:#fff}.toolbar .wa{background:#16a34a;color:#fff}.toolbar .dark{background:#15225e;color:#fff}.toolbar .red{background:#ffe6eb;color:#a30022}.toolbar input[type=file]{display:none}.status{margin-left:auto;font-size:12px;color:#5b6b82}
+.toolbar select{border:0;border-radius:8px;padding:8px 6px;cursor:pointer;font-weight:800;background:#15225e;color:#fff;font-size:13px;font-family:inherit;max-width:190px}
+.stage{padding:16px 8px 40px}.poster{width:min(1120px,100%);aspect-ratio:1/1.414;margin:auto;position:relative;overflow:hidden;border:4px solid #f01850;background:linear-gradient(135deg,#f7fff0,#fff 48%,#edfaff);box-shadow:0 12px 40px #0003}
+.poster:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(130deg,transparent 0 23%,#d7e97a44 24% 30%,transparent 31%),linear-gradient(30deg,transparent 0 76%,#2ab79a30 77% 87%,transparent 88%)}
+.inner{position:absolute;inset:16px;z-index:2}.header{position:relative;height:96px;border:3px solid #efc534;border-radius:7px;background:linear-gradient(90deg,#1638ad,#08277f,#244fc0);display:flex;align-items:center;padding:2px 14px 2px 88px;color:#fff;box-shadow:inset 0 3px #fff5,0 4px 12px #0002}.logo{position:absolute;left:3px;top:50%;transform:translateY(-50%);width:66px;height:66px;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#fff;box-shadow:0 2px 8px #0005}
+.title{width:100%;min-width:0;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-family:"Noto Sans Kannada","Noto Serif Kannada","Baloo Tamma 2",sans-serif;font-weight:800;line-height:1.1;text-align:center;text-shadow:1px 2px #0007}.title-main{width:100%;padding:2px 0;font-size:clamp(13px,2.05vw,28px);color:#fff;white-space:normal;word-break:break-word;overflow-wrap:anywhere;overflow:hidden;line-height:1.12}.title-sub{font-size:clamp(15px,1.75vw,20px);color:#ffea91}.title-detail{font-size:clamp(10px,1.15vw,13px);color:#edf3ff;font-weight:700}
+.center{position:absolute;left:20px;right:20px;top:96px;bottom:300px;border:3px dashed #1970ee;border-radius:16px;background:#ffffffdc;overflow:hidden;z-index:3}.center.drop-active{border-color:#16a34a;background:#effff5}.center-help{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#71809b;font-size:17px;font-weight:600;pointer-events:none;padding:20px}.center-help .big{font-size:46px;color:#97a5b8;margin-bottom:5px}#layer{position:absolute;inset:0}
+.element{position:absolute;min-width:90px;min-height:38px;padding:6px 8px;border:none;border-radius:7px;background:transparent;cursor:move;user-select:none;touch-action:none}.image-element{padding:0;min-width:50px;min-height:50px}.element.has-border{border:2px solid #1645ba;background:#fffdf5ee}.image-element.has-border{border:3px solid #1645ba;background:#fff;padding:3px}.element img{width:100%;height:100%;object-fit:fill;display:block;border-radius:5px;pointer-events:none}.text-content{outline:none;min-height:28px;cursor:move;touch-action:none;user-select:none;-webkit-user-select:none;white-space:nowrap;word-break:normal;overflow:visible;display:block;width:max-content;max-width:none}.text-content:focus{cursor:text;user-select:text;-webkit-user-select:text;outline:none}.text-element{width:auto!important;min-width:100px}.text-element:has(.text-content.wrap){width:auto!important}.text-content.wrap{white-space:pre-wrap;word-break:break-word;width:100%;max-width:100%;overflow-wrap:anywhere}.text-content.align-left{text-align:left}.text-content.align-center{text-align:center}.text-content.align-right{text-align:right}.element.selected{outline:none}.element:not(.selected) .controls,.element:not(.selected) .resize-handle{display:none}.resize-handle{position:absolute;width:22px;height:22px;background:#173d9c;border:2.5px solid #fff;border-radius:50%;z-index:9;touch-action:none;box-shadow:0 2px 6px #0006}.resize-handle.nw{left:-11px;top:-11px;cursor:nwse-resize}.resize-handle.ne{right:-11px;top:-11px;cursor:nesw-resize}.resize-handle.sw{left:-11px;bottom:-11px;cursor:nesw-resize}.resize-handle.se{right:-11px;bottom:-11px;cursor:nwse-resize}
+.controls{position:absolute;right:2px;top:2px;left:auto;bottom:auto;transform:none;display:flex;gap:2px;background:#173d9c;color:#fff;border-radius:8px;padding:2px;z-index:5;white-space:nowrap}.controls button{border:0;background:transparent;color:#fff;width:23px;height:22px;border-radius:5px;cursor:pointer;font-weight:900;padding:0}.controls input[type=color]{width:23px;height:22px;padding:0;border:0;background:transparent;cursor:pointer}.export-hide{visibility:hidden!important}
+.ribbon{position:absolute;left:42px;right:42px;bottom:252px;min-height:38px;padding:3px 10px;border:3px solid #c49d25;border-radius:6px;background:#fff;box-shadow:0 0 0 3px #fff,0 0 0 5px #187348;display:flex;align-items:center;justify-content:center;text-align:center;z-index:4}.ribbon div{color:#f02c7d;font-weight:800;font-size:17px;line-height:1.15;white-space:normal;padding:2px 4px}
+.cards{position:absolute;left:8px;right:8px;bottom:10px;height:240px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:118px;gap:6px;z-index:5}.card{position:relative;border:2px solid #123d9d;border-radius:9px;background:#ffffffea;padding:4px;display:flex;flex-direction:column;align-items:center;min-width:0;min-height:0;overflow:hidden;box-shadow:0 2px 5px #173d9c18}.card-photo-shell{position:relative;width:100%;height:auto;flex:1 1 auto;min-height:0;overflow:hidden;border:2px solid #123d9d;border-radius:5px;background:#edf2f8;box-shadow:0 1px 4px #123d9d33}.card-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;cursor:pointer;border-radius:3px}.card-photo-shell.empty-photo{background:linear-gradient(135deg,#f4f7fb,#e4ebf5)}.card-photo-shell.empty-photo:before{content:"";position:absolute;z-index:1;left:50%;top:10px;transform:translateX(-50%);width:18px;height:18px;border:3px solid #aab9ce;border-radius:50%;pointer-events:none}.card-photo-shell.empty-photo:after{content:"";position:absolute;z-index:1;left:50%;bottom:6px;transform:translateX(-50%);width:38px;height:20px;border:3px solid #aab9ce;border-bottom:0;border-radius:28px 28px 0 0;pointer-events:none}.card input.card-name{display:block;width:100%;min-width:0;margin-top:3px;padding:2px 3px;border:2px solid #1749b5;border-radius:6px;text-align:center;background:#fff;flex:0 0 auto;height:20px;font-size:10px;line-height:15px;font-weight:900;color:#123d9d;outline:none}.card input.card-name::placeholder{color:#6b7fa8;font-weight:700}.card .role{display:flex;align-items:center;justify-content:center;width:100%;min-height:20px;max-height:30px;margin-top:2px;border-radius:6px;color:white;padding:3px 4px;text-align:center;font-weight:900;font-size:9px;line-height:1.1;white-space:normal;word-break:break-word;overflow:hidden;flex:0 0 auto;border:1px solid #fff9}.card .role:empty:before{content:attr(data-placeholder);color:#e8eefa;font-weight:700}.card:first-child .card-photo-shell{flex:1 1 auto}.card:first-child{border-width:2px;border-color:#123d9d;box-shadow:0 2px 5px #173d9c18}.c1 .role{background:#123bb1}.c2 .role{background:#08733f}.c3 .role{background:#c5163a}.c4 .role{background:#6b17a3}.c5 .role{background:#1458a6}.c6 .role{background:#0a7d57}.remove-card,.move-handle{position:absolute;top:2px;width:18px;height:18px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;font-weight:900;z-index:8;box-shadow:0 1px 4px #0005}.remove-card{right:2px;background:#e51c46;font-size:10px}.move-handle{left:2px;background:#173d9c;font-size:11px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}.move-handle:active{cursor:grabbing}.card.dragging{opacity:.55;transform:scale(.98);z-index:30}.cards.sorting{user-select:none;-webkit-user-select:none}.card-tools{position:absolute;inset:0;pointer-events:none}.card-crop,.card-file{position:absolute;bottom:3px;z-index:5;pointer-events:auto;border:0;border-radius:5px;background:#173d9cdd;color:#fff;font-size:8px;font-weight:800;padding:2px 5px;cursor:pointer;line-height:11px}.card-file{left:3px}.card-crop{right:3px}.card-file input{display:none}.card.drop-active{outline:3px solid #16a34a;outline-offset:2px;background:#effff5}.export-name{width:100%;min-height:16px;margin-top:2px;padding:1px 2px;border-bottom:1px solid #d7e0ee;text-align:center;font-size:11px;line-height:14px;font-weight:900;color:#101f42;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:0 0 auto}.image-link-row{display:flex;gap:3px;width:100%;margin-top:3px;flex:0 0 auto}.image-link-input{flex:1;min-width:0;height:19px;border:2px solid #d18b00;border-radius:5px;padding:1px 4px;font-size:8px;font-weight:700;color:#6b4b00;background:#fffdf0}.image-link-btn{height:19px;border:0;border-radius:5px;background:#d18b00;color:#fff;font-size:8px;font-weight:900;padding:0 5px;cursor:pointer}.image-link-btn:hover{filter:brightness(.95)}.add-row-group{position:absolute;right:12px;bottom:310px;z-index:10;display:flex;gap:6px}.add-row{border:0;border-radius:8px;background:#173d9c;color:#fff;padding:7px 10px;cursor:pointer;font-weight:800;font-size:11px}
+@media(max-width:760px){.toolbar{position:static;padding:5px;gap:4px}.toolbar button,.toolbar label{font-size:10px;padding:6px 7px}.toolbar select{font-size:10px;padding:6px 3px;max-width:130px}.status{width:100%;margin-left:0}.stage{padding:5px 3px 25px}.poster{border-width:2px}.inner{inset:7px}.header{height:82px;padding-left:54px;padding-right:6px}.logo{left:2px;width:50px;height:50px}.title-main{font-size:15px;letter-spacing:-0.2px}.title-sub{font-size:clamp(11px,3vw,14px)}.title-detail{font-size:clamp(8px,2.15vw,10px)}.center{top:92px;bottom:370px;left:7px;right:7px;border-width:2px}.center-help{font-size:9px}.center-help .big{font-size:27px}.ribbon{left:15px;right:15px;min-height:32px;padding:3px 6px}.ribbon div{font-size:10px;white-space:normal}.cards{left:3px;right:3px;bottom:6px;height:330px;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:108px;gap:4px}.card{padding:3px}.card-photo-shell{height:auto}.card-photo-shell.empty-photo:before{top:7px;width:14px;height:14px}.card-photo-shell.empty-photo:after{bottom:4px;width:30px;height:16px}.card input.card-name{height:15px;font-size:7px;padding:1px}.card .role{min-height:16px;max-height:24px;font-size:7px;padding:1px;line-height:1.05}.card:first-child .card-photo-shell{flex:1 1 auto}.card:first-child{border-width:2px}.remove-card,.move-handle{width:16px;height:16px;top:2px}.remove-card{right:2px;font-size:9px}.move-handle{left:2px;font-size:10px}.card-crop,.card-file{font-size:7px;padding:2px 3px;line-height:9px;bottom:2px}.card-file{left:2px}.card-crop{right:2px}.export-name{min-height:12px;margin-top:1px;font-size:7px;line-height:10px}.add-row-group{bottom:336px;right:6px}.add-row{font-size:8px;padding:5px 7px}.center-help{padding:8px}}
+.crop-modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;z-index:5000;padding:12px}.crop-modal.open{display:flex}.crop-box{width:min(720px,96vw);background:#fff;border-radius:14px;padding:12px;box-shadow:0 20px 60px #0008}.crop-title{font-size:16px;font-weight:800;color:#173d9c;margin-bottom:8px}.crop-wrap{width:min(600px,88vw);height:min(600px,62vh);margin:auto;display:flex;align-items:center;justify-content:center;background:#111;border-radius:10px;overflow:hidden;touch-action:none}.crop-canvas{width:100%;height:100%;display:block;touch-action:none}.crop-actions{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:10px}.crop-actions button{border:0;border-radius:8px;padding:8px 12px;font-weight:800;cursor:pointer}.crop-actions .primary{background:#173d9c;color:#fff}.crop-actions .green{background:#118448;color:#fff}.crop-actions .red{background:#ffe6eb;color:#a30022}.crop-actions input[type=range]{width:180px}
+.no-print{display:block}@media print{.no-print{display:none!important}}
+
+/* ===== 25 POST GRID: label + photo + name visible; photo URLs live in the CODE (PHOTO_URLS) ===== */
+.card{display:flex !important;flex-direction:column !important;align-items:stretch !important;gap:3px;min-height:0;height:auto;padding:4px;overflow:hidden}
+.card .position-label{order:1;flex:0 0 auto;width:100%;min-height:18px;max-height:34px;margin:0;padding:2px 3px;border:1px solid #0e2f80;border-radius:5px;background:#123d9d !important;color:#fff !important;text-align:center;font-size:9px !important;line-height:11px !important;font-weight:900 !important;white-space:normal;word-break:break-word;overflow:hidden;outline:none;cursor:text}
+.card-photo-shell{order:2;flex:1 1 auto !important;min-height:0;width:100% !important;height:auto !important;max-height:none;aspect-ratio:auto !important;border-radius:5px !important}
+.card-photo{border-radius:3px !important;object-position:center top !important}
+.photo-del{position:absolute;top:2px;right:2px;z-index:6;width:16px;height:16px;padding:0;border:1.5px solid #fff;border-radius:50%;background:#e51c46;color:#fff;font-size:11px;font-weight:900;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 3px #0006}
+.card input.card-name{order:3;flex:0 0 auto;width:100%;min-width:0;height:22px;margin:0;padding:1px 3px;box-sizing:border-box;border:2px solid #1749b5;border-radius:5px;background:#fff;text-align:center;font-size:11px;line-height:18px;font-weight:900;color:#123d9d}
+@media(max-width:760px){
+ .card{padding:2px;gap:2px}
+ .card .position-label{min-height:16px;font-size:6.5px !important;line-height:9px !important;padding:1px 2px}
+ .card input.card-name{height:18px;font-size:8px;line-height:14px}
+ .photo-del{width:14px;height:14px;font-size:10px}
+}
+
+</style>
+</head>
+<body>
+<div class="toolbar">
+<button class="green" onclick="addText()">➕ TEXT</button><label class="dark" title="ಮಧ್ಯದ ಬಾರ್ಡರ್‌ಗೆ ಗ್ಯಾಲರಿಯಿಂದ ಇಮೇಜ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ. ಸೈಜ್ ಬದಲಾಯಿಸಲು: ಒಂದು ಬೆರಳಿನಿಂದ ಮೂಲೆಯ ಹ್ಯಾಂಡಲ್‌ಗಳನ್ನು ಎಳೆಯಿರಿ, ಅಥವಾ ಮೊಬೈಲ್‌ನಲ್ಲಿ ಇಮೇಜ್ ಮೇಲೆ ಎರಡು ಬೆರಳಿಡಿ ಎಳೆಯಿರಿ (ಪಿಂಚ್)">🖼️ ಇಮೇಜ್ ಅಪ್ಲೋಡ್<input type="file" id="imgUpload" accept="image/*"></label><button onclick="toolbarTextSize(-2)">A−</button><button onclick="toolbarTextSize(2)">A+</button><label title="ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯದ ಬಣ್ಣ">🎨 <input type="color" id="textColor" value="#123d9c"></label>
+<button onclick="toolbarToggleBorder()" title="ಆಯ್ಕೆ ಮಾಡಿದ ಪಠ್ಯ ಅಥವಾ ಫೋಟೋಗೆ ಬಾರ್ಡರ್ ಹಾಕಿ / ತೆಗೆಯಿರಿ">⬜ ಬಾರ್ಡರ್</button>
+<button id="undoBtn" onclick="undoAction()" title="ಹಿಂದೆ (Undo - Ctrl+Z)" disabled>↩️ Undo</button><button id="redoBtn" onclick="redoAction()" title="ಮುಂದೆ (Redo - Ctrl+Y)" disabled>↪️ Redo</button>
+<button class="wa" onclick="shareWhatsApp()">🟢 WhatsApp</button>
+<button class="dark" onclick="downloadPNG()">⬇️ PNG</button>
+<button class="dark" onclick="downloadPDF()">📄 PDF</button>
+<button onclick="saveNow()">💾 Save</button><button onclick="loadSaved()">↩️ Load</button><button class="red" onclick="resetPoster()">♻️ Reset</button><label title="ಬ್ಯಾನರ್ ಸೈಜ್ ಆಯ್ಕೆ ಮಾಡಿ — 4 ಡೀಫಾಲ್ಟ್ ಸೈಜ್ ಇವೆ, ಕೊನೆಯದರಲ್ಲಿ ನೀವೇ ಹೈಟ್ & ವಿಡ್ತ್ ಸೆಟ್ ಮಾಡಬಹುದು">📐 ಸೈಜ್ <select id="posterSize"><option value="1120x1584">A4 ಪೋರ್ಟ್ರೈಟ್ 1120×1584</option><option value="1584x1120">A4 ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್ 1584×1120</option><option value="1080x1080">ಸ್ಕ್ವೇರ್ 1080×1080</option><option value="1080x1920">ಸ್ಟೋರಿ 1080×1920</option><option value="custom">ಕಸ್ಟಮ್ ಹೈಟ್ × ವಿಡ್ತ್…</option></select></label><label>🎨 Background<input type="color" id="bgColor" value="#ffffff"></label><label>⚡ <input id="autoSave" type="checkbox" checked> Auto Save</label><span id="status" class="status">Auto Save: ON</span>
+</div>
+<div id="cropModal" class="crop-modal"><div class="crop-box"><div class="crop-title">📐 ಫೋಟೋ Crop / Drag / Zoom</div><div class="crop-wrap"><canvas id="cropCanvas" class="crop-canvas" width="700" height="700"></canvas></div><div class="crop-actions"><button class="red" onclick="closeCrop()">ರದ್ದು</button><button onclick="cropZoom(-0.1)">−</button><input id="cropZoom" type="range" min="0.5" max="3" step="0.01" value="1" oninput="setCropZoom(this.value)"><button onclick="cropZoom(0.1)">+</button><button class="green" onclick="directUseCrop()">ನೇರವಾಗಿ Upload</button><button class="primary" onclick="applyCrop()">Crop ಮಾಡಿ ಬಳಸಿ</button></div></div></div>
+<div class="stage"><div id="poster" class="poster"><div class="inner">
+<div class="header">
+  <img class="logo" id="logo" alt="KSSEDEA ಲಾಂಛನ">
+  <div class="title" aria-label="ಕರ್ನಾಟಕ ರಾಜ್ಯ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ನೌಕರರ ಸಂಘ (ರಿ), ಬೆಂಗಳೂರು">
+    <div class="title-main">ಕರ್ನಾಟಕ ರಾಜ್ಯ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ನೌಕರರ ಸಂಘ (ರಿ), ಬೆಂಗಳೂರು</div>
+  </div>
+</div>
+<div id="center" class="center"><div id="centerHelp" class="center-help"></div><div id="layer"></div></div>
+<div class="ribbon"><div contenteditable="true"> ರಾಜ್ಯ ಪದಾಧಿಕಾರಿಗಳು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ ನೌಕರರ ಸಂಘ (ರಿ), ಬೆಂಗಳೂರು</div></div>
+<div class="add-row-group" id="addRowGroup"><button class="add-row" onclick="addOnePosition()" title="ಕೊನೆಯಲ್ಲಿ ಒಂದು ಹೊಸ ಹುದ್ದೆ ಸೇರಿಸಿ — ಕ್ಲಿಕ್ ಮಾಡಿ ಫೋಟೋ ಸೇರಿಸಿ">＋ 1 ಹುದ್ದೆ</button><button class="add-row" onclick="addTwoPositions()" title="ಕೊನೆಯಲ್ಲಿ ಎರಡು ಹೊಸ ಹುದ್ದೆಗಳನ್ನು ಸೇರಿಸಿ">＋ 2 ಹುದ್ದೆಗಳು</button></div><div class="cards" id="cards"></div>
+</div></div></div>
+
+<div class="no-print" style="text-align:center;margin:15px 0;">
+  <a href="https://kssedea.blogspot.com/"
+     target="_blank"
+     style="display:inline-block;
+            background:#1565c0;
+            color:#fff;
+            text-decoration:none;
+            padding:10px 18px;
+            border-radius:8px;
+            font-weight:bold;
+            font-size:16px;">
+<br> Creation: Venugopal and Manohar KSSEDEA <br>
+    🌐 KSSEDEA WEBSITE – Click Here to Visit
+  </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+const FIXED = {
+  logo: "data:image/png;base64,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"
+};
+/* =========================================================
+   DEFAULT 24 POST SLOTS — ALL PHOTOS ARE INTENTIONALLY BLANK.
+   Add each person's image using the highlighted PHOTO URL field.
+   Enter the person's name in the highlighted name field.
+   The position labels below are the fixed/default post names.
+   ========================================================= */
+const positionGroups=[
+  {title:"ರಾಜ್ಯಾಧ್ಯಕ್ಷರು",count:1},
+  {title:"ಪ್ರಧಾನ ಕಾರ್ಯದರ್ಶಿ",count:1},
+  {title:"ಖಜಾಂಚಿ",count:1},
+{title:"ಹಿರಿಯ ಉಪಾಧ್ಯಕ್ಷರು",count:2},
+  {title:"ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ",count:8},
+{title:"ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ",count:8},
+{title:"ಆಂತರಿಕ ಲೆಕ್ಕ ಪರಿಶೋಧಕರು",count:1},
+ 
+  {title:"",count:2,placeholder:"ಹೊಸ ಹುದ್ದೆ (ಹೆಸರು ಟೈಪ್ ಮಾಡಿ)"}
+];
+const initialPositions=positionGroups.flatMap((g,group)=>Array.from({length:g.count},()=>({title:g.title,group,placeholder:g.placeholder||g.title})));
+/* ##############################################################
+   ##########     ಫೋಟೋ URL ಹಾಕುವ ಜಾಗ — ಹೈಲೈಟ್     ##########
+   #  ಪ್ರತಿ ಹುದ್ದೆಯ ಎದುರಿನ "  " ಒಳಗೆ ನಿಮ್ಮ ಫೋಟೋದ LINK ಹಾಕಿ.  #
+   #  ಉದಾ: "https://example.com/photo.jpg"                      #
+   #  ಹಾಕಿದ ತಕ್ಷಣ ಆ ಫೋಟೋ ಬ್ಯಾನರ್ ಲೇಔಟ್‌ನಲ್ಲಿ ಕಾಣುತ್ತದೆ.        #
+   #  (ಕ್ರಮ ಸಂಖ್ಯೆ = ಕೆಳಗಿನ ಹುದ್ದೆಗಳ ಕ್ರಮ)                     #
+   ############################################################## */
+const PHOTO_URLS=[
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXAcRShz7iJ8WVeaKOf1q5DcwR6LzfDFaA-86oR0umQlMl2H_MxVr7B_ri5CwoIBz-1tWlN0E8RDuw9qYJu7asebClN-Obvy4DIwycFwHOjNhrfxomtQum7AWNMtKhmNyl-5l45uh7_B9kEo65tIz4eExqd5JwkE1mlhrLqYeF_w0farY9vaFH_OeIZ_4Z/s417/Screenshot_3.png", // 1  ರಾಜ್ಯಾಧ್ಯಕ್ಷರು
+
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpGm3I-HeVrekK9UvZ1NWI8zo4TouYq4CJVMD5RfbDLSsXcN8yZRkWX7aFyVOEVclShv-dnO60brBTxQot53f4x2YM9Csc5CFheqS8safEn8ar-KRsp7cggffvy1OlLeKp-toe1Duy9_LAkN3ZBsFJsH5OVlGTMSIzKC2zxjZyVoJsu_86IwkDewHv-e9a/w177-h145/Screenshot_2.jpg", // 2  ಪ್ರಧಾನ ಕಾರ್ಯದರ್ಶಿ
+
+
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgD12_ue48-sit3AY8GxmN29C5Y9ZGu7dBAcK4v9_nVqwF8ibBTKGUR7i6FDfG9nmR9EHUYsX4BBrKDIxLuM2BqSwmtBEG8cVENAablveI7HmTsucgavTT-Uqgx2v_Goiq1PQFR2EwS8Wq-7e7Z-qhOM5zN6pP86aUjOtUkXjRBtWOAIwFdM6tlxoUlTUgb/s718/Screenshot_1.jpg", // 3  ಖಜಾಂಚಿ
+
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqlBwNnd7pffX4qlO9-9SxfY_RVFnBq0mvRwTZd6HhsEBnbHJjNi3juIUD_Av-xM3ueH6_OV4Wl9Ed_x5AXDvgHnoTNwTSJVRcFl7nhyphenhyphenBHy5f2Gna3AHSA-r6V0rasx6j7y4k3KdWAGu0Kh_aTUvJF1Rfc0OXxAFy9lrEvje5uNQdiz1nm2lDQCyDkz6j4/s569/Screenshot_3.jpg", // 4 ಹಿರಿಯ ಉಪಾಧ್ಯಕ್ಷರು
+
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPVxTYoT33N3AArMLjd5sB1epQmBxd33pNlxAeRONAwLPhkMDeO0FuW4RvcuwC09d2HzA3nSzvoLBdzmIQnXuGEcOECaH_lWmuMvskZHQHggUHA6yI6GUDA_VqgVhUQEtxHscs8HzARoForIXO5cf-0YLEp88OiUdJPOVxZ4YnvWukiCBJ3PVmTIV2Ccay/s406/WhatsApp%20Image%202024-12-20%20at%2012.18.27_7d02812a.jpg", // 5 ಹಿರಿಯ ಉಪಾಧ್ಯಕ್ಷರು
+
+  "", // 6  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 7  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 8  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 9  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 10 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 11 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 12 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 13 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 14 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 15 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 16 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 17 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+
+  "", // 18  ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+"", // 19  ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+"", // 20  ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+ "", // 21 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+"", // 22  ಆಂತರಿಕ ಲೆಕ್ಕ ಪರಿಶೋಧಕರು
+
+];
+/* ##############################################################
+   ##########   ಹೆಸರು (NAME) ಡಿಫಾಲ್ಟ್ ಹಾಕುವ ಜಾಗ — ಹೈಲೈಟ್    ##########
+   #  ಫೋಟೋ URL ರೀತಿಯಲ್ಲಿ, ಪ್ರತಿ ಹುದ್ದೆಯ ಎದುರಿನ "" ಒಳಗೆ ಹೆಸರು ಬರೆಯಿರಿ. #
+   #  ಉದಾ: "ಮನೋಹರ್"  — ಹೀಗೆ ಎಲ್ಲಾ 22 ಹುದ್ದೆಗಳಿಗೂ ಹೆಸರುಗಳು ಬರುತ್ತವೆ.  #
+   #  (ಕ್ರಮ ಸಂಖ್ಯೆ = ಕೆಳಗಿನ ಹುದ್ದೆಗಳ ಕ್ರಮ = ಫೋಟೋ URL ಕ್ರಮ)          #
+   #  ಬದಲಾಯಿಸಿ ಉಳಿಸಿ → ಮತ್ತೆ ತೆರೆದಾಗ ಹೊಸ ಹೆಸರುಗಳು ಕಾಣುತ್ತವೆ.        #
+   #  ಯಾವ ಹುದ್ದೆಗೆ ಹೆಸರು ಬೇಡವೋ ಅದನ್ನು ಖಾಲಿ ("") ಬಿಡಿ.              #
+   #  (ಈಗಾಗಲೇ ಬ್ಯಾನರ್‌ನಲ್ಲಿ ಟೈಪ್ ಮಾಡಿದ ಹೆಸರುಗಳು ಬದಲಾಗುವುದಿಲ್ಲ)        #
+   ############################################################## */
+const DEFAULT_NAMES=[
+  "ಶ್ರೀ ಚೌಡಪ್ಪ ಎಸ್", // 1  ರಾಜ್ಯಾಧ್ಯಕ್ಷರು
+  "ಶ್ರೀ ರವಿ ಪ್ರಕಾಶ ಎಂ ಎಸ್", // 2  ಪ್ರಧಾನ ಕಾರ್ಯದರ್ಶಿ
+  "ಶ್ರೀ ಸಂತೋಷ್ ಎಸ್ ಪಟ್ಟಣಶೆಟ್ಟಿ", // 3  ಖಜಾಂಚಿ
+  "ಶ್ರೀಮತಿ  ಕವಿತ ಬಿ.ಎ,", // 4  ಹಿರಿಯ ಉಪಾಧ್ಯಕ್ಷರು
+  "ಶ್ರೀ ಈರನಗೌಡ ಕೆ ಪಾಟೀಲ್", // 5  ಹಿರಿಯ ಉಪಾಧ್ಯಕ್ಷರು
+  "", // 4  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  "", // 5  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  "", // 6  ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  " ", // 7 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  "", // 8 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  "", // 9 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  " ", // 10 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  "", // 11 ರಾಜ್ಯ ಕ್ರೀಡಾ ಕಾರ್ಯದರ್ಶಿ
+  "", // 12 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+  "", // 13 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+  "", // 14 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+  "", // 15 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+  "", // 16 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+  "", // 17 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+  "", // 18 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+ "", // 19 ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯದರ್ಶಿ
+ "", // 20  ಆಂತರಿಕ ಲೆಕ್ಕ ಪರಿಶೋಧಕರು
+  
+];
+const $=id=>document.getElementById(id); let selectedText=null;
+const EMPTY_IMG="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+async function toDataURLSafe(url){
+  if(!url||url.startsWith("data:"))return url;
+  const candidates=[
+    "https://wsrv.nl/?url="+encodeURIComponent(url)+"&w=400&h=400&fit=cover&output=jpg",
+    "https://images.weserv.nl/?url="+encodeURIComponent(url)+"&w=400&h=400&fit=cover&output=jpg",
+    "https://corsproxy.io/?"+encodeURIComponent(url),
+    url
+  ];
+  for(const u of candidates){
+    try{
+      const res=await fetch(u,{mode:"cors"});
+      if(!res.ok)continue;
+      const blob=await res.blob();
+      if(!blob||!blob.size)continue;
+      const dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(blob)});
+      if(typeof dataUrl==="string"&&dataUrl.startsWith("data:image"))return dataUrl;
+    }catch(e){}
+  }
+  return null;
+}
+/* ALL 24 PERSON PHOTOS ARE BLANK BY DEFAULT. Add them using each card PHOTO URL field. */
+function applyFixedPhotos(){
+  const logo=$("logo");
+  if(logo){logo.removeAttribute("crossorigin");logo.src=FIXED.logo;}
+}
+applyFixedPhotos();
+function status(t){$("status").textContent=t;setTimeout(()=>$("status").textContent=$("autoSave").checked?"Auto Save: ON":"Auto Save: OFF",1500)}
+function readFile(f,cb){const r=new FileReader();r.onload=e=>cb(e.target.result);r.readAsDataURL(f)}
+function fitTitle(){const t=document.querySelector(".title-main"),box=document.querySelector(".title");if(!t||!box)return;const wide=box.clientWidth>700;const maxH=Math.max(16,box.clientHeight-2);t.style.maxHeight=maxH+"px";let f=wide?28:16;const minF=wide?12:9;t.style.fontSize=f+"px";while(f>minF&&(t.scrollHeight>t.clientHeight+1||t.scrollHeight>maxH)){f-=0.5;t.style.fontSize=f+"px"}}
+function fitRibbon(){const r=document.querySelector(".ribbon div"),box=document.querySelector(".ribbon");if(!r||!box)return;r.style.whiteSpace="normal";const wide=box.clientWidth>700;const maxW=box.clientWidth-10,maxH=mobileMaxH(wide);let f=wide?19:11;const minF=wide?10:6.5;r.style.fontSize=f+"px";while(f>minF&&(r.scrollWidth>maxW+1||r.scrollHeight>maxH)){f-=0.5;r.style.fontSize=f+"px"}}
+function mobileMaxH(wide){return wide?46:36}
+function toolbarTextSize(d){if(!selectedText)return status("ಮೊದಲು ಪಠ್ಯ/ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಿ");resizeSelected(selectedText.querySelector(".controls button:nth-child("+(d<0?1:2)+")")||selectedText,d)}
+function toggleBorder(btnOrEl){const e=btnOrEl.classList&&btnOrEl.classList.contains("element")?btnOrEl:btnOrEl.closest(".element");if(!e)return;e.classList.toggle("has-border");const b=e.querySelector(".border-btn");if(b)b.textContent=e.classList.contains("has-border")?"⬛":"⬜";autoSave()}
+function toolbarToggleBorder(){if(!selectedText)return status("ಮೊದಲು ಪಠ್ಯ/ಫೋಟೋ ಆಯ್ಕೆ ಮಾಡಿ");toggleBorder(selectedText)}
+$("textColor").oninput=e=>{if(selectedText&&selectedText.querySelector(".text-content"))changeColor(e.target.value);else status("ಮೊದಲು ಪಠ್ಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ")};
+function controls(isImg=false){return "<div class=\"controls export-hide\"><button title=\"ಚಿಕ್ಕದು\" onclick=\"event.stopPropagation();resizeSelected(this,-2)\">A−</button><button title=\"ದೊಡ್ಡದು\" onclick=\"event.stopPropagation();resizeSelected(this,2)\">A+</button>"+(isImg?"":"<input type=\"color\" value=\"#123d9c\" onchange=\"event.stopPropagation();changeColor(this.value)\"><button title=\"ಎಡಕ್ಕೆ\" onclick=\"event.stopPropagation();alignText(this,'left')\">⇤</button><button title=\"ಮಧ್ಯಕ್ಕೆ\" onclick=\"event.stopPropagation();alignText(this,'center')\">↔</button><button title=\"ಬಲಕ್ಕೆ\" onclick=\"event.stopPropagation();alignText(this,'right')\">⇥</button><button title=\"ಒಂದೇ ಸಾಲು / Wrap\" onclick=\"event.stopPropagation();toggleWrap(this)\">↵</button>")+"<button class=\"border-btn\" title=\"ಬಾರ್ಡರ್ ಹಾಕಿ / ತೆಗೆಯಿರಿ\" onclick=\"event.stopPropagation();toggleBorder(this)\">⬜</button><button onclick=\"event.stopPropagation();this.closest('.element').remove();autoSave()\">×</button></div>"}
+function resizeHandles(){return "<div class=\"resize-handle nw export-hide\" data-dir=\"nw\"></div><div class=\"resize-handle ne export-hide\" data-dir=\"ne\"></div><div class=\"resize-handle sw export-hide\" data-dir=\"sw\"></div><div class=\"resize-handle se export-hide\" data-dir=\"se\"></div>"}
+function selectText(el){document.querySelectorAll("#layer .element").forEach(x=>x.classList.remove("selected"));if(!el){selectedText=null;return;}el.classList.add("selected");selectedText=el;const tc=el.querySelector(".text-content");if(tc){const c=getComputedStyle(tc).color;if(c){const m=c.match(/\d+/g);if(m&&m.length>=3){$("textColor").value="#"+m.slice(0,3).map(v=>Number(v).toString(16).padStart(2,"0")).join("")}}}}
+function changeColor(c){if(selectedText&&selectedText.querySelector(".text-content")){selectedText.querySelector(".text-content").style.color=c;autoSave()}}
+function resizeSelected(btn,d){const e=btn.classList&&btn.classList.contains("element")?btn:btn.closest(".element");if(!e)return;if(e.classList.contains("text-element")){const b=e.querySelector(".text-content"),s=Math.max(10,Math.min(100,(parseFloat(getComputedStyle(b).fontSize)||22)+d));b.style.fontSize=s+"px";autoGrowText(e)}else{e.style.width=Math.max(50,Math.min(900,e.offsetWidth+d*12))+"px";e.style.height=Math.max(50,Math.min(900,e.offsetHeight+d*9))+"px"}autoSave()}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function alignText(btn,mode){const e=btn.closest(".element");if(!e)return;const b=e.querySelector(".text-content");b.classList.remove("align-left","align-center","align-right");b.classList.add("align-"+mode);autoSave()}
+function toggleWrap(btn){const e=btn.closest(".element");if(!e)return;const b=e.querySelector(".text-content");b.classList.toggle("wrap");btn.textContent=b.classList.contains("wrap")?"↕":"↵";autoSave()}
+function autoGrowText(e){const b=e&&e.querySelector(".text-content");if(!b)return;if(b.classList.contains("wrap")){const w=Math.max(120,Math.min(900,e.offsetWidth||300));e.style.width=w+"px";b.style.width="100%";b.style.height="auto";e.style.height=Math.max(42,b.scrollHeight+20)+"px"}else{b.style.width="max-content";e.style.width=Math.max(100,b.scrollWidth+18)+"px";e.style.height=Math.max(42,b.scrollHeight+18)+"px"}}
+function addText(t="ಇಲ್ಲಿ ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಟೈಪ್ ಮಾಡಿ..."){const e=document.createElement("div");e.className="element text-element";e.style.left="80px";e.style.top="70px";e.innerHTML='<div class="text-content" contenteditable="true">'+escapeHtml(t)+'</div>'+controls(false);$("layer").appendChild(e);makeDraggable(e);const b=e.querySelector(".text-content");b.addEventListener("input",()=>{autoGrowText(e);autoSave(false)});selectText(e);autoGrowText(e);autoSave()}
+function addImage(src){const e=document.createElement("div");e.className="element image-element";e.style.left="50px";e.style.top="40px";e.style.width="240px";e.style.height="180px";e.innerHTML='<img src="'+src+'">'+resizeHandles()+controls(true);$("layer").appendChild(e);makeDraggable(e);selectText(e);$("centerHelp").style.display="none";autoSave();const snapIdx=historyIndex;const im=e.querySelector("img");im.onload=()=>{if(im.naturalWidth&&im.naturalHeight){const w=Math.min(260,Math.max(120,$("center").clientWidth*0.55));const h=Math.max(60,Math.min(Math.max(180,$("center").clientHeight*0.75),Math.round(w*(im.naturalHeight/im.naturalWidth))));e.style.width=Math.round(w)+"px";e.style.height=h+"px";if(historyIndex===snapIdx&&snapIdx>=0){historyStack[snapIdx]=getSnapshot();if($("autoSave").checked)saveNow()}else autoSave()}}}
+/* ಗ್ಯಾಲರಿಯಿಂದ ಬಂದ ದೊಡ್ಡ ಫೋಟೋವನ್ನು ಸರಿಯಾದ ಸೈಜ್‌ಗೆ ತಂದು ಮಧ್ಯದ ಬಾರ್ಡರ್‌ನಲ್ಲಿ ಸೇರಿಸುತ್ತದೆ
+   (ದೊಡ್ಡ ಫೋಟೋಗಳು Save/PNG ಗೆ ತೊಂದರೆ ಕೊಡದಂತೆ). */
+function addImageScaled(src){
+  const done=out=>{addImage(out);status("ಇಮೇಜ್ ಮಧ್ಯದ ಬಾರ್ಡರ್‌ನಲ್ಲಿ ಸೇರಿಸಲಾಗಿದೆ ✓")};
+  try{
+    const im=new Image();
+    im.onload=()=>{
+      let out=src;
+      const max=1600,s=Math.min(1,max/Math.max(im.naturalWidth||1,im.naturalHeight||1));
+      if(s<1){
+        try{
+          const c=document.createElement("canvas");
+          c.width=Math.max(1,Math.round(im.naturalWidth*s));
+          c.height=Math.max(1,Math.round(im.naturalHeight*s));
+          const x=c.getContext("2d");
+          x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);
+          x.drawImage(im,0,0,c.width,c.height);
+          out=c.toDataURL("image/jpeg",.85);
+        }catch(e){}
+      }
+      done(out);
+    };
+    im.onerror=()=>done(src);
+    im.src=src;
+  }catch(e){done(src)}
+}
+$("imgUpload").onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)readFile(f,s=>addImageScaled(s));e.target.value="";};
+function makeDraggable(e){
+  if(e.classList.contains("image-element")&&!e.querySelector(".resize-handle")){
+    e.insertAdjacentHTML("beforeend",resizeHandles());
+  }
+  let drag=false,moved=false,resizing=false,pinching=false,resizeDir="",sx=0,sy=0,ox=0,oy=0,startW=0,startH=0,startL=0,startT=0,startFont=22,pinchDist=0,startTarget=null;
+  const tc=e.querySelector(".text-content");
+  e.style.touchAction="none";
+  if(tc)tc.style.touchAction="none";
+  const placeCaret=(cx,cy)=>{
+    if(!tc)return;
+    tc.setAttribute("contenteditable","true");
+    tc.focus();
+    try{
+      let range=null;
+      if(document.caretRangeFromPoint)range=document.caretRangeFromPoint(cx,cy);
+      else if(document.caretPositionFromPoint){const pos=document.caretPositionFromPoint(cx,cy);if(pos){range=document.createRange();range.setStart(pos.offsetNode,pos.offset);range.collapse(true)}}
+      if(range&&tc.contains(range.startContainer)){const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range)}
+    }catch(err){}
+  };
+  const begin=(cx,cy,target)=>{
+    if(target&&target.closest(".controls"))return false;
+    selectText(e);
+    const rh=target&&target.closest(".resize-handle");
+    if(rh){
+      resizing=true;drag=false;moved=true;
+      resizeDir=rh.dataset.dir||"se";
+      sx=cx;sy=cy;
+      startW=e.offsetWidth;startH=e.offsetHeight;
+      startL=e.offsetLeft;startT=e.offsetTop;
+      return true;
+    }
+    resizing=false;drag=true;moved=false;sx=cx;sy=cy;startTarget=target;
+    const r=e.getBoundingClientRect();
+    ox=cx-r.left;oy=cy-r.top;
+    return true;
+  };
+  const applyResize=(cx,cy)=>{
+    const dx=cx-sx,dy=cy-sy;
+    const cRect=$("center").getBoundingClientRect();
+    let nw=startW,nh=startH,nl=startL,nt=startT;
+    if(resizeDir.includes("e"))nw=Math.max(45,Math.min(cRect.width-startL,startW+dx));
+    if(resizeDir.includes("s"))nh=Math.max(45,Math.min(cRect.height-startT,startH+dy));
+    if(resizeDir.includes("w")){
+      nw=Math.max(45,Math.min(startL+startW,startW-dx));
+      nl=startL+(startW-nw);
+    }
+    if(resizeDir.includes("n")){
+      nh=Math.max(45,Math.min(startT+startH,startH-dy));
+      nt=startT+(startH-nh);
+    }
+    e.style.width=Math.round(nw)+"px";
+    e.style.height=Math.round(nh)+"px";
+    e.style.left=Math.round(nl)+"px";
+    e.style.top=Math.round(nt)+"px";
+  };
+  const move=(cx,cy,evt)=>{
+    if(resizing){
+      if(evt&&evt.cancelable)evt.preventDefault();
+      applyResize(cx,cy);
+      return;
+    }
+    if(!drag)return;
+    if(!moved&&Math.hypot(cx-sx,cy-sy)>3){
+      moved=true;
+      if(tc){
+        tc.blur();
+        window.getSelection?.()?.removeAllRanges?.();
+      }
+    }
+    if(moved){
+      if(evt&&evt.cancelable)evt.preventDefault();
+      const r=$("center").getBoundingClientRect();
+      const minX=Math.min(0,r.width-e.offsetWidth),maxX=Math.max(0,r.width-e.offsetWidth);
+      const minY=Math.min(0,r.height-e.offsetHeight),maxY=Math.max(0,r.height-e.offsetHeight);
+      e.style.left=Math.max(minX,Math.min(maxX,cx-r.left-ox))+"px";
+      e.style.top=Math.max(minY,Math.min(maxY,cy-r.top-oy))+"px";
+    }
+  };
+  const end=(cx,cy)=>{
+    if(resizing||pinching){
+      resizing=false;pinching=false;drag=false;moved=false;
+      autoSave();
+      return;
+    }
+    if(!drag)return;
+    const wasMoved=moved,tTarget=startTarget;
+    drag=false;moved=false;startTarget=null;
+    if(wasMoved){
+      autoSave();
+    }else if(tc&&tTarget&&tTarget.closest(".text-content")){
+      placeCaret(cx,cy);
+    }
+  };
+  const onTouchMove=x=>{
+    if(pinching&&x.touches&&x.touches.length>=2){
+      if(x.cancelable)x.preventDefault();
+      const t0=x.touches[0],t1=x.touches[1];
+      const curDist=Math.hypot(t1.clientX-t0.clientX,t1.clientY-t0.clientY);
+      const sc=curDist/Math.max(10,pinchDist);
+      if(e.classList.contains("text-element")&&tc){
+        tc.style.fontSize=Math.max(10,Math.min(100,Math.round(startFont*sc)))+"px";
+        autoGrowText(e);
+      }else{
+        const cRect=$("center").getBoundingClientRect();
+        const nw=Math.max(45,Math.min(cRect.width,Math.round(startW*sc)));
+        const nh=Math.max(45,Math.min(cRect.height,Math.round(startH*sc)));
+        const nl=Math.max(0,Math.min(cRect.width-nw,Math.round(startL-(nw-startW)/2)));
+        const nt=Math.max(0,Math.min(cRect.height-nh,Math.round(startT-(nh-startH)/2)));
+        e.style.width=nw+"px";
+        e.style.height=nh+"px";
+        e.style.left=nl+"px";
+        e.style.top=nt+"px";
+      }
+      return;
+    }
+    if((!drag&&!resizing)||!x.touches||!x.touches[0])return;
+    const t=x.touches[0];
+    move(t.clientX,t.clientY,x);
+  };
+  const onTouchEnd=x=>{
+    if(x.touches&&x.touches.length>0)return;
+    window.removeEventListener("touchmove",onTouchMove);
+    window.removeEventListener("touchend",onTouchEnd);
+    window.removeEventListener("touchcancel",onTouchCancel);
+    const t=(x.changedTouches&&x.changedTouches[0])||{clientX:sx,clientY:sy};
+    end(t.clientX,t.clientY);
+  };
+  const onTouchCancel=()=>{
+    window.removeEventListener("touchmove",onTouchMove);
+    window.removeEventListener("touchend",onTouchEnd);
+    window.removeEventListener("touchcancel",onTouchCancel);
+    drag=false;resizing=false;pinching=false;moved=false;startTarget=null;
+  };
+  e.addEventListener("touchstart",x=>{
+    if(x.target.closest(".controls"))return;
+    if(!x.touches||!x.touches.length)return;
+    selectText(e);
+    if(x.touches.length>=2){
+      if(x.cancelable)x.preventDefault();
+      pinching=true;drag=false;resizing=false;moved=true;
+      const t0=x.touches[0],t1=x.touches[1];
+      pinchDist=Math.hypot(t1.clientX-t0.clientX,t1.clientY-t0.clientY);
+      startW=e.offsetWidth;startH=e.offsetHeight;
+      startL=e.offsetLeft;startT=e.offsetTop;
+      if(tc)startFont=parseFloat(getComputedStyle(tc).fontSize)||22;
+      window.addEventListener("touchmove",onTouchMove,{passive:false});
+      window.addEventListener("touchend",onTouchEnd);
+      window.addEventListener("touchcancel",onTouchCancel);
+      return;
+    }
+    const t=x.touches[0];
+    if(begin(t.clientX,t.clientY,x.target)){
+      if(resizing&&x.cancelable)x.preventDefault();
+      window.addEventListener("touchmove",onTouchMove,{passive:false});
+      window.addEventListener("touchend",onTouchEnd);
+      window.addEventListener("touchcancel",onTouchCancel);
+    }
+  },{passive:false});
+  const onPtrMove=x=>{
+    if(x.pointerType==="touch"||(!drag&&!resizing))return;
+    move(x.clientX,x.clientY,x);
+  };
+  const onPtrUp=x=>{
+    if(x.pointerType==="touch"||(!drag&&!resizing))return;
+    window.removeEventListener("pointermove",onPtrMove);
+    window.removeEventListener("pointerup",onPtrUp);
+    window.removeEventListener("pointercancel",onPtrUp);
+    end(x.clientX,x.clientY);
+  };
+  e.addEventListener("pointerdown",x=>{
+    if(x.pointerType==="touch")return;
+    if(begin(x.clientX,x.clientY,x.target)){
+      window.addEventListener("pointermove",onPtrMove);
+      window.addEventListener("pointerup",onPtrUp);
+      window.addEventListener("pointercancel",onPtrUp);
+      if(!x.target.closest(".text-content")||resizing)x.preventDefault();
+    }
+  });
+}
+function bindCenterEvents(){
+  const c=$("center");if(!c)return;
+  c.ondragover=e=>{e.preventDefault();c.classList.add("drop-active")};
+  c.ondragleave=()=>c.classList.remove("drop-active");
+  c.ondrop=e=>{e.preventDefault();c.classList.remove("drop-active");const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(f&&f.type&&f.type.startsWith("image/"))readFile(f,s=>addImageScaled(s));else if(f&&f.type)status("ಇಮೇಜ್ ಫೈಲ್ ಮಾತ್ರ ಬಳಸಿ")};
+  c.onpointerdown=x=>{if(x.target===$("center")||x.target===$("layer"))selectText(null)};
+}
+bindCenterEvents();
+let nextCardId=1;
+function bindCardEvents(d,n){
+  const f=d.querySelector('.card-file input[type=file]'),ph=d.querySelector(".card-photo"),shell=d.querySelector(".card-photo-shell"),cr=d.querySelector(".card-crop"),url=d.querySelector(".image-link-input"),ub=d.querySelector(".image-link-btn");
+  if(ph&&(!ph.getAttribute("src")||ph.getAttribute("src")===""))ph.src=EMPTY_IMG;
+  if(shell&&ph)shell.classList.toggle("empty-photo",ph.getAttribute("src")===EMPTY_IMG||!ph.getAttribute("src"));
+  if(f){f.onchange=e=>{const x=e.target.files[0];if(x)readFile(x,s=>openCrop(n,s));f.value=""};}
+  if(ph)ph.onclick=()=>f?.click();
+  if(cr)cr.onclick=()=>{const src=ph?ph.getAttribute("src"):"";if(src&&src!==EMPTY_IMG&&src!==location.href)openCrop(n,ph.src);else f?.click()};
+  if(ub)ub.onclick=()=>{const u=(url?.value||"").trim();if(!u)return status("ಮೊದಲು Photo URL ಹಾಕಿ");setCardPhoto(n,u);status("ಫೋಟೋ URL ಸೇರಿಸಲಾಗಿದೆ ✓")};
+  if(url)url.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();ub?.click()}});
+  const del=d.querySelector(".photo-del");
+  if(del)del.onclick=(e)=>{e.stopPropagation();const src=ph?ph.getAttribute("src"):"";if(!src||src===EMPTY_IMG){status("ಈ ಹುದ್ದೆಯಲ್ಲಿ ಫೋಟೋ ಇಲ್ಲ");return}if(!confirm("ಈ ಹುದ್ದೆಯ ಫೋಟೋವನ್ನು ಡಿಲೀಟ್ ಮಾಡಬೇಕೇ?"))return;if(url)url.value="";setCardPhoto(n,EMPTY_IMG);status("ಫೋಟೋ ಡಿಲೀಟ್ ಆಯಿತು ✓")};
+  const lbl=d.querySelector(".position-label,.role");
+  if(lbl){lbl.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();lbl.blur()}});lbl.addEventListener("input",()=>{if(lbl.textContent.trim()==="")lbl.innerHTML=""});}
+  ["dragenter","dragover"].forEach(v=>d.addEventListener(v,e=>{e.preventDefault();d.classList.add("drop-active")}));
+  ["dragleave","drop"].forEach(v=>d.addEventListener(v,e=>{e.preventDefault();d.classList.remove("drop-active")}));
+  d.addEventListener("drop",e=>{const x=e.dataTransfer.files?.[0];if(x&&x.type.startsWith("image/"))readFile(x,s=>openCrop(n,s))});
+}
+function makeCard(n,position={title:"",group:0}){
+  const d=document.createElement("div"),title=position.title||"",group=Number.isFinite(position.group)?position.group:0,placeholder=position.placeholder||title||"ಹುದ್ದೆಯ ಹೆಸರು";
+  d.className="card c"+((group%6)+1);d.id="card"+n;d.dataset.cardId=String(n);d.dataset.group=String(group);
+  d.innerHTML='<button class="move-handle export-hide" type="button" aria-label="ಹಿಡಿದು ಎಳೆದು ಕ್ರಮ ಬದಲಿಸಿ" title="ಹಿಡಿದು ಎಳೆದು ಹುದ್ದೆಯ ಕ್ರಮ ಬದಲಿಸಿ">⠿</button>'+
+    '<button class="remove-card export-hide" type="button" aria-label="ಈ ಹುದ್ದೆ ತೆಗೆದುಹಾಕಿ" title="ತೆಗೆದುಹಾಕಿ" onclick="removeCard('+n+')">×</button>'+
+    '<div class="role position-label" contenteditable="true" spellcheck="false" data-position="'+escapeHtml(title)+'" data-placeholder="'+escapeHtml(placeholder)+'">'+escapeHtml(title)+'</div>'+
+    '<div class="card-photo-shell empty-photo"><img id="photo'+n+'" class="card-photo" src="'+EMPTY_IMG+'" alt="'+escapeHtml(placeholder)+' ಫೋಟೋ">'+
+    '<label class="card-file export-hide" title="ಫೋಟೋ Upload">📷<input type="file" accept="image/*"></label>'+
+    '<button class="card-crop export-hide" type="button" title="ಫೋಟೋ Crop / ಬದಲಿಸಿ">✂️</button>'+
+    '<button class="photo-del" type="button" title="ಈ ಫೋಟೋ ಡಿಲೀಟ್ ಮಾಡಿ" aria-label="ಫೋಟೋ ಡಿಲೀಟ್ ಮಾಡಿ">×</button></div>'+
+    '<input type="text" class="card-name" id="name'+n+'" placeholder="ಹೆಸರು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ" aria-label="'+escapeHtml(placeholder)+' ಹೆಸರು">';
+  bindCardEvents(d,n);return d;
+}
+function applyPhotoUrls(){
+  const cards=[...document.querySelectorAll("#cards .card")];
+  cards.forEach((card,i)=>{
+    const u=String(PHOTO_URLS[i]||"").trim();
+    if(!u)return;
+    const im=card.querySelector(".card-photo"),shell=card.querySelector(".card-photo-shell");
+    if(!im)return;
+    const cur=im.getAttribute("src")||"";
+    if(!cur||cur===EMPTY_IMG){im.src=u;if(shell)shell.classList.remove("empty-photo");}
+  });
+}
+/* DEFAULT_NAMES ಅರೇ‌ನಿಂದ ಖಾಲಿ ಹುದ್ದೆಗಳ ಹೆಸರನ್ನು ಭರ್ತಿ ಮಾಡುತ್ತದೆ.
+   ಕೋಡ್‌ನಲ್ಲಿ ಹೆಸರು ಬದಲಾಯಿಸಿದರೆ (ಫೋಟೋ URL ಬದಲಾಯಿಸಿದಂತೆ) ಮುಂದಿನ ಬಾರಿ ಲೋಡ್ ಆದಾಗ ಹೊಸ ಹೆಸರು ಕಾಣುತ್ತದೆ.
+   ಬ್ಯಾನರ್‌ನಲ್ಲಿ ನೀವು ಟೈಪ್ ಮಾಡಿದ ಹೆಸರುಗಳು ಬದಲಾಗುವುದಿಲ್ಲ. */
+function applyDefaultNames(){
+  let stored=null;
+  try{stored=JSON.parse(localStorage.getItem("ksse_default_names_v1")||"null")}catch(e){}
+  const cards=[...document.querySelectorAll("#cards .card")];
+  cards.forEach((card,i)=>{
+    const inp=card.querySelector(".card-name");
+    if(!inp)return;
+    const cur=(inp.value||"").trim();
+    const def=String(DEFAULT_NAMES[i]||"").trim();
+    const prev=Array.isArray(stored)?String(stored[i]||"").trim():"";
+    let next=null;
+    if(!cur)next=def;                       // ಹೆಸರು ಖಾಲಿಯಿದ್ದರೆ ಡಿಫಾಲ್ಟ್ ಹೆಸರು ಹಾಕಿ
+    else if(prev&&cur===prev)next=def;      // ಕೋಡ್‌ನಲ್ಲಿ ಡಿಫಾಲ್ಟ್ ಬದಲಾಯಿಸಿದ್ದರೆ ಅದು ಇಲ್ಲಿ ಅಪ್ಲೈ ಆಗಲಿ
+    if(next!==null&&next!==cur){inp.value=next;inp.setAttribute("value",next);}
+  });
+  try{localStorage.setItem("ksse_default_names_v1",JSON.stringify(DEFAULT_NAMES))}catch(e){}
+}
+function setCardPhoto(n,s){const im=$("photo"+n);if(!im)return;im.src=s;const shell=im.closest(".card-photo-shell");if(shell)shell.classList.toggle("empty-photo",!s||s===EMPTY_IMG);autoSave()}
+let cropState={n:null,src:"",img:null,x:0,y:0,zoom:1,drag:false,sx:0,sy:0,ox:0,oy:0,direct:false};
+function openCrop(n,src){cropState={n,src,img:new Image(),x:0,y:0,zoom:1,drag:false,sx:0,sy:0,ox:0,oy:0,direct:false};cropState.img.onload=()=>{document.querySelector('#cropZoom').value=1;document.querySelector('#cropModal').classList.add('open');drawCrop()};cropState.img.onerror=()=>{cropState.img=null;setCardPhoto(n,src)};cropState.img.src=src.startsWith('data:')?src:src+'#crop'+Date.now()}
+function drawCrop(){const c=$("cropCanvas"),ctx=c.getContext('2d'),W=c.width,H=c.height;ctx.clearRect(0,0,W,H);ctx.fillStyle='#111';ctx.fillRect(0,0,W,H);const im=cropState.img;if(!im)return;const base=Math.max(W/im.width,H/im.height);const sc=base*cropState.zoom;const w=im.width*sc,h=im.height*sc;const x=(W-w)/2+cropState.x,y=(H-h)/2+cropState.y;ctx.drawImage(im,x,y,w,h);ctx.strokeStyle='#fff';ctx.lineWidth=5;ctx.strokeRect(3,3,W-6,H-6)}
+function setCropZoom(v){cropState.zoom=parseFloat(v);drawCrop()}function cropZoom(d){setCropZoom(Math.max(.5,Math.min(3,cropState.zoom+d)));$("cropZoom").value=cropState.zoom}
+function cropPointerDown(e){const c=$("cropCanvas");cropState.drag=true;cropState.sx=e.clientX;cropState.sy=e.clientY;cropState.ox=cropState.x;cropState.oy=cropState.y;c.setPointerCapture?.(e.pointerId);e.preventDefault()}function cropPointerMove(e){if(!cropState.drag)return;cropState.x=cropState.ox+(e.clientX-cropState.sx);cropState.y=cropState.oy+(e.clientY-cropState.sy);drawCrop()}function cropPointerUp(){cropState.drag=false}
+$("cropCanvas").addEventListener('pointerdown',cropPointerDown);$("cropCanvas").addEventListener('pointermove',cropPointerMove);$("cropCanvas").addEventListener('pointerup',cropPointerUp);$("cropCanvas").addEventListener('pointercancel',cropPointerUp);
+function directUseCrop(){
+  if(cropState.n==null)return;
+  let output=cropState.src;
+  try{
+    const im=cropState.img;
+    if(im&&im.naturalWidth&&im.naturalHeight){
+      const max=600,scale=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight));
+      const c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.naturalWidth*scale));c.height=Math.max(1,Math.round(im.naturalHeight*scale));
+      const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(im,0,0,c.width,c.height);
+      output=c.toDataURL("image/jpeg",.82);
+    }
+  }catch(e){}
+  setCardPhoto(cropState.n,output);closeCrop();
+}
+function applyCrop(){if(cropState.n==null||!cropState.img)return;const c=document.createElement('canvas');c.width=600;c.height=600;const ctx=c.getContext('2d'),W=c.width,H=c.height,im=cropState.img,base=Math.max(W/im.width,H/im.height),sc=base*cropState.zoom,w=im.width*sc,h=im.height*sc,x=(W-w)/2+cropState.x*(W/$("cropCanvas").width),y=(H-h)/2+cropState.y*(H/$("cropCanvas").height);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);ctx.drawImage(im,x,y,w,h);setCardPhoto(cropState.n,c.toDataURL('image/jpeg',.86));closeCrop()}
+function closeCrop(){$("cropModal").classList.remove('open');cropState.n=null}
+function removeCard(n){const card=$("card"+n);if(!card)return;card.style.display="none";syncLayout();autoSave()}
+function addTwoPositions(){
+  const container=$("cards"),group=initialPositions.length%positionGroups.length;
+  for(let i=0;i<2;i++)container.appendChild(makeCard(nextCardId++,{title:"",group,placeholder:"ಹೊಸ ಹುದ್ದೆ (ಹೆಸರು ಟೈಪ್ ಮಾಡಿ)"}));
+  syncLayout();autoSave();status("2 ಹೊಸ ಹುದ್ದೆಗಳನ್ನು ಸೇರಿಸಲಾಗಿದೆ ✓");
+}
+function addOnePosition(){
+  const container=$("cards"),group=initialPositions.length%positionGroups.length;
+  container.appendChild(makeCard(nextCardId++,{title:"",group,placeholder:"ಹೊಸ ಹುದ್ದೆ (ಹೆಸರು ಟೈಪ್ ಮಾಡಿ)"}));
+  syncLayout();autoSave();status("1 ಹೊಸ ಹುದ್ದೆ ಸೇರಿಸಲಾಗಿದೆ ✓ — ಫೋಟೋ ಕ್ಲಿಕ್ ಮಾಡಿ ಸೇರಿಸಿ");
+}
+function upgradeCards(){
+  document.querySelectorAll("#cards .card").forEach(d=>{
+    const n=parseInt(d.dataset.cardId||(d.id||"").replace("card",""),10);
+    if(!Number.isFinite(n))return;
+    if(!d.querySelector(".move-handle"))d.insertAdjacentHTML("afterbegin",'<button class="move-handle export-hide" type="button" title="ಹಿಡಿದು ಎಳೆದು ಕ್ರಮ ಬದಲಿಸಿ">⠿</button>');
+    if(!d.querySelector(".remove-card"))d.insertAdjacentHTML("afterbegin",'<button class="remove-card export-hide" type="button" title="ತೆಗೆದುಹಾಕಿ" onclick="removeCard('+n+')">×</button>');
+    const shell=d.querySelector(".card-photo-shell");
+    if(shell){
+      if(!shell.querySelector(".card-file"))shell.insertAdjacentHTML("beforeend",'<label class="card-file export-hide" title="ಫೋಟೋ Upload">📷<input type="file" accept="image/*"></label>');
+      if(!shell.querySelector(".card-crop"))shell.insertAdjacentHTML("beforeend",'<button class="card-crop export-hide" type="button" title="ಫೋಟೋ Crop / ಬದಲಿಸಿ">✂️</button>');
+      if(!shell.querySelector(".photo-del"))shell.insertAdjacentHTML("beforeend",'<button class="photo-del" type="button" title="ಈ ಫೋಟೋ ಡಿಲೀಟ್ ಮಾಡಿ">×</button>');
+    }
+    const row=d.querySelector(".image-link-row");
+    if(row)row.remove();
+    const lbl=d.querySelector(".position-label,.role");
+    if(lbl){lbl.setAttribute("contenteditable","true");lbl.setAttribute("spellcheck","false");if(!lbl.getAttribute("data-placeholder"))lbl.setAttribute("data-placeholder","ಹುದ್ದೆಯ ಹೆಸರು");}
+  });
+}
+function ensureMinCards(min){
+  const container=$("cards");if(!container)return;
+  let count=[...container.children].filter(x=>getComputedStyle(x).display!=="none").length;
+  while(count<min){container.appendChild(makeCard(nextCardId++,{title:"",group:count%positionGroups.length,placeholder:"ಹೊಸ ಹುದ್ದೆ (ಹೆಸರು ಟೈಪ್ ಮಾಡಿ)"}));count++;}
+}
+for(const position of initialPositions)$("cards").appendChild(makeCard(nextCardId++,position));
+
+function rebuildNextCardId(){
+  const ids=[...document.querySelectorAll("#cards .card")].map(c=>parseInt(c.dataset.cardId||c.id.replace("card",""),10)).filter(Number.isFinite);
+  nextCardId=(ids.length?Math.max(...ids):0)+1;
+}
+/* ===== ಬ್ಯಾನರ್ ಸೈಜ್: ಡೀಫಾಲ್ಟ್ ಪ್ರೀಸೆಟ್ + ಕಸ್ಟಮ್ ಹೈಟ್/ವಿಡ್ತ್ ===== */
+let posterSize={w:1120,h:1584};     /* ಡೀಫಾಲ್ಟ್: A4 ಪೋರ್ಟ್ರೈಟ್ ರೇಶಿಯೋ */
+let posterFit={s:1,fitW:0,fitH:0};   /* ಕಂಟೆಂಟ್ ಫಿಟ್ ಮಾಡಲು ಬೇಕಾದ ಸ್ಕೇಲ್ (s<1 ಆದಾಗ ಮಾತ್ರ) */
+function setPosterBox(){
+  const p=$("poster");
+  p.style.width=posterSize.w+"px";
+  p.style.height=posterSize.h+"px";
+  const sel=$("posterSize");
+  if(sel){
+    const k=posterSize.w+"x"+posterSize.h;
+    let found=false;
+    for(const o of sel.options)if(o.value===k){found=true;break;}
+    sel.value=found?k:"custom";
+  }
+}
+function applyPosterSize(w,h,save=true){
+  w=Math.round(Math.max(200,Math.min(5000,w)));
+  h=Math.round(Math.max(200,Math.min(5000,h)));
+  posterSize={w,h};
+  setPosterBox();
+  syncLayout();fitTitle();fitRibbon();
+  if(save){autoSave();status("ಬ್ಯಾನರ್ ಸೈಜ್ "+w+" × "+h+" ಆಯ್ಕೆ ಆಯಿತು ✓");}
+}
+$("posterSize").onchange=e=>{
+  const v=e.target.value;
+  if(v==="custom"){
+    const w=parseInt(prompt("ಅಗಲ (Width) px ನಮೂದಿಸಿ (200–5000):",posterSize.w),10);
+    if(!w||w<200||w>5000){setPosterBox();return status("ಸರಿಯಾದ ಅಗಲ ನಮೂದಿಸಿ — 200 ರಿಂದ 5000");}
+    const h=parseInt(prompt("ಎತ್ತರ (Height) px ನಮೂದಿಸಿ (200–5000):",posterSize.h),10);
+    if(!h||h<200||h>5000){setPosterBox();return status("ಸರಿಯಾದ ಎತ್ತರ ನಮೂದಿಸಿ — 200 ರಿಂದ 5000");}
+    applyPosterSize(w,h);
+  }else{
+    const parts=String(v).split("x").map(Number);
+    if(parts.length===2&&parts[0]>0&&parts[1]>0)applyPosterSize(parts[0],parts[1]);
+    else setPosterBox();
+  }
+};
+function syncLayout(){
+  const container=$("cards");if(!container)return;
+  const visible=[...container.children].filter(x=>getComputedStyle(x).display!=="none").length;
+  const mobile=(posterSize?posterSize.w:$("poster").clientWidth)<=760,cols=5,rowH=mobile?160:194,gap=mobile?4:6;
+  const rows=Math.max(1,Math.ceil(visible/cols)),h=rows*rowH+(rows-1)*gap;
+  container.style.height=h+"px";container.style.gridAutoRows=rowH+"px";
+  document.querySelector(".ribbon").style.bottom=(h+(mobile?14:18))+"px";
+  $("center").style.bottom=(h+(mobile?92:96))+"px";
+  const g=document.querySelector(".add-row-group");if(g)g.style.bottom=(h+(mobile?60:66))+"px";
+  const inner=document.querySelector(".inner");
+  if(posterSize){
+    /* ಆಯ್ಕೆ ಮಾಡಿದ ಸೈಜ್‌ನಲ್ಲಿ ಪೋಸ್ಟರ್ ನಿಖರವಾಗಿ ಇರುತ್ತದೆ.
+       ಒಳಗಿನ ಕಂಟೆಂಟ್ ಹೆಚ್ಚು ಎತ್ತರವಾಗಿದ್ದರೆ ಅದನ್ನು ಸಮಾನವಾಗಿ ತಗ್ಗಿಸಿ (scale) ಫಿಟ್ ಮಾಡುತ್ತೇವೆ —
+       ಆಯ್ಕೆ ಮಾಡಿದ ಹೈಟ್/ವಿಡ್ತ್ ಬದಲಾಗದು, ಎಲ್ಲಾ 25 ಹುದ್ದೆಗಳೂ ಕಾಣುತ್ತವೆ. */
+    $("poster").style.minHeight="";
+    const contentH=h+(mobile?496:588);
+    const s=Math.min(1,(posterSize.h-8)/Math.max(1,contentH-8));
+    if(s<1&&inner){
+      const fitW=Math.round((posterSize.w-8)/s)+8,fitH=Math.round((posterSize.h-8)/s)+8;
+      posterFit={s,fitW,fitH};
+      inner.style.inset="0";
+      inner.style.border="16px solid transparent";
+      inner.style.width=(fitW-8)+"px";
+      inner.style.height=(fitH-8)+"px";
+      inner.style.transform="scale("+s+")";
+      inner.style.transformOrigin="0 0";
+    }else{
+      posterFit={s:1,fitW:0,fitH:0};
+      if(inner){
+        inner.style.inset="";inner.style.border="";inner.style.width="";inner.style.height="";
+        inner.style.transform="";inner.style.transformOrigin="";
+      }
+    }
+  }else{
+    $("poster").style.minHeight=(h+(mobile?496:588))+"px";
+  }
+}
+function syncInputs(){document.querySelectorAll("#poster input[type=text]").forEach(inp=>inp.setAttribute("value",inp.value))}
+
+function bindReorderEvents(){
+  const container=$("cards");if(!container||container.dataset.sortableBound==="1")return;
+  container.dataset.sortableBound="1";
+  container.addEventListener("pointerdown",e=>{
+    const handle=e.target.closest(".move-handle");if(!handle)return;
+    if(e.button!==undefined&&e.button!==0)return;
+    const card=handle.closest(".card");if(!card)return;
+    e.preventDefault();
+    const startX=e.clientX,startY=e.clientY,pointerId=e.pointerId,touch=e.pointerType==="touch";
+    let started=false,moved=false,timer=null;
+    const begin=()=>{if(started)return;started=true;card.classList.add("dragging");container.classList.add("sorting");};
+    if(touch)timer=setTimeout(begin,220);else begin();
+    const move=ev=>{
+      if(ev.pointerId!==pointerId)return;
+      if(!started){
+        if(Math.hypot(ev.clientX-startX,ev.clientY-startY)>9){clearTimeout(timer);cleanup(false);}
+        return;
+      }
+      ev.preventDefault();
+      const hit=document.elementFromPoint(ev.clientX,ev.clientY),target=hit&&hit.closest(".card");
+      if(!target||target===card||target.parentElement!==container)return;
+      const rect=target.getBoundingClientRect(),after=ev.clientX>rect.left+rect.width/2;
+      if(after){if(card!==target.nextElementSibling){container.insertBefore(card,target.nextElementSibling);moved=true;}}
+      else if(card!==target){container.insertBefore(card,target);moved=true;}
+    };
+    const cleanup=save=>{
+      clearTimeout(timer);document.removeEventListener("pointermove",move);document.removeEventListener("pointerup",up);document.removeEventListener("pointercancel",cancel);
+      card.classList.remove("dragging");container.classList.remove("sorting");
+      if(save&&moved){syncLayout();autoSave();status("ಹುದ್ದೆಗಳ ಕ್ರಮ ಬದಲಿಸಲಾಗಿದೆ ✓");}
+    };
+    const up=ev=>{if(ev.pointerId===pointerId)cleanup(true);};
+    const cancel=ev=>{if(ev.pointerId===pointerId)cleanup(false);};
+    document.addEventListener("pointermove",move,{passive:false});
+    document.addEventListener("pointerup",up);
+    document.addEventListener("pointercancel",cancel);
+  });
+}
+
+bindReorderEvents();
+let historyStack=[],historyIndex=-1,isRestoringHistory=false,historyTimer=null;
+function getSnapshot(){
+  syncInputs();
+  const clone=$("poster").cloneNode(true);
+  clone.querySelectorAll(".element.selected").forEach(x=>x.classList.remove("selected"));
+  return JSON.stringify({html:clone.innerHTML,bg:$("poster").style.background||"",size:{w:posterSize.w,h:posterSize.h}});
+}
+function updateUndoRedoUI(){
+  if($("undoBtn"))$("undoBtn").disabled=historyIndex<=0;
+  if($("redoBtn"))$("redoBtn").disabled=historyIndex>=historyStack.length-1;
+}
+function pushHistory(){
+  if(isRestoringHistory)return;
+  if(historyTimer){clearTimeout(historyTimer);historyTimer=null;}
+  const snap=getSnapshot();
+  if(historyIndex>=0&&historyStack[historyIndex]===snap){updateUndoRedoUI();return;}
+  historyStack=historyStack.slice(0,historyIndex+1);
+  historyStack.push(snap);
+  if(historyStack.length>20)historyStack.shift();else historyIndex++;
+  updateUndoRedoUI();
+}
+function rebindPosterAll(){
+  applyFixedPhotos();
+  bindCenterEvents();
+  document.querySelectorAll("#layer .element").forEach(el=>{
+    makeDraggable(el);
+    const b=el.querySelector(".text-content");
+    if(b)b.oninput=()=>{autoGrowText(el);autoSave(false)};
+  });
+  document.querySelectorAll("#cards .card").forEach((d,idx)=>{
+    const n=parseInt(d.dataset.cardId||(d.id||"").replace("card",""),10)||(idx+1);
+    bindCardEvents(d,n);
+  });
+  const freshCards=$("cards");if(freshCards)freshCards.removeAttribute("data-sortable-bound");
+  bindReorderEvents();
+  rebuildNextCardId();
+  selectedText=null;
+  syncLayout();
+  fitTitle();
+}
+function restoreSnapshot(snapStr){
+  if(!snapStr)return;
+  isRestoringHistory=true;
+  try{
+    const x=JSON.parse(snapStr);
+    if(x.size&&+x.size.w>=200&&+x.size.h>=200){posterSize={w:+x.size.w,h:+x.size.h};setPosterBox();}
+    $("poster").innerHTML=x.html;
+    $("poster").style.background=x.bg||"";
+    rebindPosterAll();
+    if($("autoSave").checked){
+      try{localStorage.setItem("ksse_banner_v12",snapStr)}catch(e){}
+    }
+  }finally{
+    isRestoringHistory=false;
+    updateUndoRedoUI();
+  }
+}
+function undoAction(){
+  if(historyTimer){clearTimeout(historyTimer);historyTimer=null;pushHistory();}
+  if(historyIndex<=0)return status("ಹಿಂದಿನ ಹಂತ ಇಲ್ಲ");
+  historyIndex--;
+  restoreSnapshot(historyStack[historyIndex]);
+  status("↩️ ಹಿಂದೆ (Undo) ಆಯಿತು ✓");
+}
+function redoAction(){
+  if(historyTimer){clearTimeout(historyTimer);historyTimer=null;pushHistory();}
+  if(historyIndex>=historyStack.length-1)return status("ಮುಂದಿನ ಹಂತ ಇಲ್ಲ");
+  historyIndex++;
+  restoreSnapshot(historyStack[historyIndex]);
+  status("↪️ ಮುಂದೆ (Redo) ಆಯಿತು ✓");
+}
+document.addEventListener("keydown",e=>{
+  if((e.ctrlKey||e.metaKey)&&!e.altKey){
+    if(e.key.toLowerCase()==="z"){
+      e.preventDefault();
+      if(e.shiftKey)redoAction();else undoAction();
+    }else if(e.key.toLowerCase()==="y"){
+      e.preventDefault();
+      redoAction();
+    }
+  }
+});
+function saveNow(showStatus=true){try{syncInputs();localStorage.setItem("ksse_banner_v12",JSON.stringify({html:$("poster").innerHTML,bg:$("poster").style.background||"",size:{w:posterSize.w,h:posterSize.h}}));if(showStatus)status("ಉಳಿಸಲಾಗಿದೆ ✓")}catch(e){}}
+function autoSave(immediate=true){
+  if(!isRestoringHistory){
+    if(immediate)pushHistory();
+    else{
+      if(historyTimer)clearTimeout(historyTimer);
+      historyTimer=setTimeout(()=>pushHistory(),300);
+    }
+  }
+  saveNow(false);
+}
+function loadSaved(showStatus=true){try{const s=localStorage.getItem("ksse_banner_v12");if(!s){if(showStatus)status("ಉಳಿಸಿದ ವಿನ್ಯಾಸ ಇಲ್ಲ");return false;}const x=JSON.parse(s);if(x.size&&+x.size.w>=200&&+x.size.h>=200){posterSize={w:+x.size.w,h:+x.size.h};setPosterBox();}$("poster").innerHTML=x.html;$("poster").style.background=x.bg||"";rebindPosterAll();syncInputs();pushHistory();if(showStatus)status("ಲೋಡ್ ಆಯಿತು ✓");return true;}catch(e){if(showStatus)status("ಉಳಿಸಿದ ಮಾಹಿತಿ ಲೋಡ್ ಆಗಲಿಲ್ಲ");return false;}}
+function resetMiddleInfo(){
+  $("layer").innerHTML="";
+  $("centerHelp").style.display="";
+}
+function resetLowerPhotos(){
+  $("cards").innerHTML="";nextCardId=1;
+  for(const position of initialPositions)$("cards").appendChild(makeCard(nextCardId++,position));
+  syncLayout();
+}
+function resetPoster(){
+  const choice=prompt("Reset ನಲ್ಲಿ ಯಾವುದನ್ನು ಅಳಿಸಬೇಕು?\n\n1 = ಮಧ್ಯದ Border ಒಳಗಿನ Text / Photos ಮಾತ್ರ\n2 = ಕೆಳಗಿನ ಪದಾಧಿಕಾರಿಗಳ ಹುದ್ದೆಗಳು / ಫೋಟೋಗಳು ಮಾತ್ರ\n3 = ಎರಡನ್ನೂ (ಮಧ್ಯದ ಮಾಹಿತಿ + ಪದಾಧಿಕಾರಿಗಳ ಪಟ್ಟಿಯನ್ನು)\n\n1, 2 ಅಥವಾ 3 ನಮೂದಿಸಿ:","1");
+  if(choice!=="1"&&choice!=="2"&&choice!=="3")return status("Reset ರದ್ದು ಮಾಡಲಾಗಿದೆ");
+  if(!confirm("⚠️ ಆಯ್ಕೆ ಮಾಡಿದ ಮಾಹಿತಿಯನ್ನು Reset ಮಾಡಬೇಕೇ?"))return;
+  if(!confirm("⚠️ ಎರಡನೇ ಮತ್ತು ಅಂತಿಮ ಎಚ್ಚರಿಕೆ. ಆಯ್ಕೆ ಮಾಡಿದ ಮಾಹಿತಿ ಶಾಶ್ವತವಾಗಿ ಅಳಿಸಲಾಗುತ್ತದೆ. ಮುಂದುವರಿಯಬೇಕೇ?"))return;
+  if(choice==="1"||choice==="3")resetMiddleInfo();
+  if(choice==="2"||choice==="3")resetLowerPhotos();
+  syncInputs();
+  pushHistory();
+  saveNow(false);
+  status("Reset ಆಯಿತು ✓");
+}
+$("bgColor").oninput=e=>{$("poster").style.background=e.target.value;autoSave(false)};document.addEventListener("input",e=>{if(e.target.matches("[contenteditable],input[type=text]"))autoSave(false)});window.onresize=()=>{fitTitle();fitRibbon();syncLayout()};
+applyPosterSize(1120,1584,false);
+pushHistory();
+async function prepareExportImages(){
+  applyFixedPhotos();
+  syncInputs();
+  const imgs=[$("logo"),...document.querySelectorAll("#layer img"),...document.querySelectorAll(".card-photo")];
+  for(const im of imgs){
+    if(!im)continue;
+    const s=im.getAttribute("src")||"";
+    if(!s||s===location.href){im.src=EMPTY_IMG;continue;}
+    if(!s.startsWith("data:")&&!s.startsWith("blob:")){
+      const d=await toDataURLSafe(s);
+      if(d)im.src=d;
+    }
+  }
+  await Promise.all(imgs.map(im=>new Promise(resolve=>{
+    if(!im||!im.src)return resolve();
+    if(im.complete&&im.naturalWidth)return resolve();
+    im.onload=()=>resolve();im.onerror=()=>resolve();setTimeout(resolve,2500);
+  })));
+  try{if(document.fonts){await document.fonts.ready;await document.fonts.load('800 34px "Noto Sans Kannada"');await document.fonts.load('700 22px "Noto Sans Kannada"')}}catch(e){}
+}
+async function renderCanvas(){
+  status("ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ...");
+  await prepareExportImages();
+  const posterEl=$("poster");
+  const prevSelected=document.querySelectorAll(".element.selected");
+  prevSelected.forEach(x=>x.classList.remove("selected"));
+  const exportHidden=[];document.querySelectorAll(".controls,.resize-handle,.remove-card,.move-handle,.add-row-group,.card-file,.card-crop").forEach(x=>{if(!x.classList.contains("export-hide")){x.classList.add("export-hide");exportHidden.push(x)}});
+  const innerEl=posterEl.querySelector(".inner");
+  const fitMode=(posterFit.s<1)&&innerEl&&posterFit.fitW>0;
+  let savedFit=null;
+  if(fitMode){
+    /* ಕಂಟೆಂಟ್ ಸ್ಕೇಲ್ ಆಗಿದ್ದರೆ — ಎಕ್ಸ್‌ಪೋರ್ಟ್‌ಗಾಗಿ ಸ್ಕೇಲ್ ತೆಗೆದು ನೈಸರ್ಗಿಕ ಸೈಜ್‌ನಲ್ಲಿ ಕ್ಯಾಪ್ಚರ್ ಮಾಡಿ,
+       ನಂತರ ಆಯ್ಕೆ ಮಾಡಿದ ಹೈಟ್/ವಿಡ್ತ್‌ಗೆ ಸರಿಪಡಿಸಿ (html2canvas transform ಅವಲಂಬನೆ ಇಲ್ಲ). */
+    savedFit={pw:posterEl.style.width,ph:posterEl.style.height,it:innerEl.style.transform};
+    posterEl.style.width=posterFit.fitW+"px";
+    posterEl.style.height=posterFit.fitH+"px";
+    innerEl.style.transform="none";
+    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  }
+  const sx=window.scrollX||window.pageXOffset||0,sy=window.scrollY||window.pageYOffset||0;
+  window.scrollTo(0,0);
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const rect=posterEl.getBoundingClientRect();
+  const W=Math.round(rect.width)||posterEl.offsetWidth||1120;
+  const H=Math.round(rect.height)||posterEl.offsetHeight||Math.round(W*1.414);
+  const maxDim=Math.max(posterSize?posterSize.w:W,posterSize?posterSize.h:H);
+  const safeScale=Math.min(3,Math.max(1,Math.floor((3508/maxDim)*100)/100));
+  const isCanvasBlank=(cv)=>{
+    if(!cv||!cv.width||!cv.height)return true;
+    try{
+      const tc=document.createElement("canvas");
+      tc.width=16;tc.height=16;
+      const tctx=tc.getContext("2d");
+      tctx.drawImage(cv,0,0,16,16);
+      const d=tctx.getImageData(0,0,16,16).data;
+      for(let i=0;i<d.length;i+=4){
+        if(d[i+3]>10&&(d[i]<245||d[i+1]<245||d[i+2]<245))return false;
+      }
+      return true;
+    }catch(e){return false}
+  };
+  const makeOpts=(sc)=>({
+    scale:sc,
+    useCORS:true,
+    allowTaint:false,
+    backgroundColor:"#ffffff",
+    width:W,
+    height:H,
+    scrollX:0,
+    scrollY:0,
+    windowWidth:Math.max(document.documentElement.clientWidth||0,window.innerWidth||0,W),
+    windowHeight:Math.max(document.documentElement.scrollHeight||0,window.innerHeight||0,H+100),
+    imageTimeout:15000,
+    logging:false,
+    onclone:(clonedDoc)=>{
+      const cp=clonedDoc.getElementById("poster");
+      if(cp){
+        cp.style.width=W+"px";
+        cp.style.height=H+"px";
+        cp.style.margin="0";
+      }
+      const clLogo=clonedDoc.getElementById("logo");
+      if(clLogo){clLogo.removeAttribute("crossorigin");clLogo.src=$("logo").src||FIXED.logo;}
+      clonedDoc.querySelectorAll(".header").forEach(el=>{el.style.boxShadow="0 4px 12px rgba(0,0,0,0.15)"});
+      if(cp){
+        const originalCards=[...posterEl.querySelectorAll(".card")],clonedCards=[...cp.querySelectorAll(".card")];
+        originalCards.forEach((original,i)=>{
+          const card=clonedCards[i];if(!card)return;
+          const name=original.querySelector(".card-name")?.value.trim()||"";
+          const nameInput=card.querySelector(".card-name");
+          if(nameInput){const label=clonedDoc.createElement("div");label.className="export-name";label.textContent=name;nameInput.replaceWith(label);}
+          const role=card.querySelector(".role");if(role&&!role.textContent.trim())role.removeAttribute("data-placeholder");
+        });
+        cp.querySelectorAll("[contenteditable]").forEach(el=>el.removeAttribute("contenteditable"));
+        cp.querySelectorAll(".image-link-row,.card-file,.card-crop,.photo-del,.move-handle,.remove-card,.add-row-group").forEach(el=>{el.style.display="none"});
+      }
+      clonedDoc.querySelectorAll(".card-photo").forEach(im=>{
+        const s=im.getAttribute("src")||"";
+        if(!s||s===location.href)im.src=EMPTY_IMG;
+      });
+    }
+  });
+  try{
+    let c=await html2canvas(posterEl,makeOpts(safeScale));
+    if(isCanvasBlank(c)){
+      c=await html2canvas(posterEl,makeOpts(1.5));
+    }
+    if(isCanvasBlank(c)){
+      c=await html2canvas(posterEl,makeOpts(1));
+    }
+    if(fitMode&&savedFit){
+      const sc=c.width/Math.max(1,W);
+      const out=document.createElement("canvas");
+      out.width=Math.max(1,Math.round(posterSize.w*sc));
+      out.height=Math.max(1,Math.round(posterSize.h*sc));
+      const octx=out.getContext("2d");
+      octx.fillStyle="#ffffff";
+      octx.fillRect(0,0,out.width,out.height);
+      octx.drawImage(c,0,0,out.width,out.height);
+      c=out;
+    }
+    return c;
+  }finally{
+    window.scrollTo(sx,sy);
+    if(fitMode&&savedFit){
+      posterEl.style.width=savedFit.pw;
+      posterEl.style.height=savedFit.ph;
+      innerEl.style.transform=savedFit.it;
+    }
+    exportHidden.forEach(x=>x.classList.remove("export-hide"));
+    prevSelected.forEach(x=>x.classList.add("selected"));
+  }
+}
+async function downloadPNG(){
+  try{
+    const c=await renderCanvas();
+    const blob=await new Promise(r=>c.toBlob(r,"image/png"));
+    if(blob){
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement("a");
+      a.download="KSSEDEA_State_Office_Bearers.png";
+      a.href=url;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),5000);
+    }else{
+      const a=document.createElement("a");
+      a.download="KSSEDEA_State_Office_Bearers.png";
+      a.href=c.toDataURL("image/png");
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+    status("PNG ಡೌನ್‌ಲೋಡ್ ಆಯಿತು ✓");
+  }catch(e){
+    console.error(e);
+    status("PNG ದೋಷ");
+  }
+}
+async function downloadPDF(){
+  try{
+    const c=await renderCanvas();
+    const out=document.createElement("canvas");
+    out.width=c.width;
+    out.height=c.height;
+    const octx=out.getContext("2d");
+    octx.fillStyle="#ffffff";
+    octx.fillRect(0,0,out.width,out.height);
+    octx.drawImage(c,0,0);
+    const imgData=out.toDataURL("image/jpeg",0.95);
+    const {jsPDF}=window.jspdf;
+    const p=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
+    const pr=c.width/c.height;let pw=210,phh=210/pr;if(phh>297){phh=297;pw=297*pr;}p.addImage(imgData,"JPEG",(210-pw)/2,(297-phh)/2,pw,phh);
+    p.save("KSSEDEA_State_Office_Bearers.pdf");
+    status("PDF ಡೌನ್‌ಲೋಡ್ ಆಯಿತು ✓");
+  }catch(e){
+    console.error(e);
+    status("PDF ದೋಷ");
+  }
+}
+async function shareWhatsApp(){try{const c=await renderCanvas(),b=await new Promise(r=>c.toBlob(r,"image/png")),f=new File([b],"KSSEDEA_State_Office_Bearers.png",{type:"image/png"});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[f]}))return navigator.share({title:"ರಾಜ್ಯ ಪದಾಧಿಕಾರಿಗಳ ಬ್ಯಾನರ್",files:[f]})}catch(e){}window.open("https://wa.me/?text="+encodeURIComponent("ರಾಜ್ಯ ಪದಾಧಿಕಾರಿಗಳು — ಕರ್ನಾಟಕ ರಾಜ್ಯ ಶಾಲಾ ಶಿಕ್ಷಣ ಇಲಾಖೆ"),"_blank")}
+window.onload=()=>{const restored=loadSaved(false);if(!restored){applyFixedPhotos();applyPhotoUrls();applyDefaultNames();fitTitle();fitRibbon();syncLayout();saveNow(false)}else{upgradeCards();ensureMinCards(25);rebindPosterAll();applyPhotoUrls();applyDefaultNames();fitTitle();fitRibbon();syncLayout();saveNow(false)}};window.onbeforeunload=()=>{saveNow(false)};
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44bdaf30c7ae674',t:'MTc5MTAyOTU0OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4529bfbfe91d8de',t:'MTc5MTEwMDM2OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <!-- ಇದು ಮೊಬೈಲ್‌ನಲ್ಲಿಯೂ ಡೆಸ್ಕ್‌ಟಾಪ್ ವ್ಯೂ ಬರುವುದನ್ನು ಖಚಿತಪಡಿಸುತ್ತದೆ -->
+    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <title>ನಿಮ್ಮ ಪೇಜ್ ಶೀರ್ಷಿಕೆ</title>
+</head>
+
+
+
+
+
+
+
+
+
+
